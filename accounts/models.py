@@ -13,7 +13,7 @@ class TimeStampedModel(models.Model):
 class CustomUser(AbstractUser):
     phone = models.CharField(max_length=15)
     email = models.EmailField()
-    avatar = models.ImageField()
+    avatar = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.get_full_name()
