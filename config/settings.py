@@ -195,5 +195,9 @@ SIMPLE_JWT = {
     "CHECK_USER_IS_ACTIVE": True,
 }
 
+STATIC_URL = 'static/'
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
+
 
 AUTH_USER_MODEL = 'accounts.CustomUser'

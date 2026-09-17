@@ -28,6 +28,12 @@ class Project(TimeStampedModel):
     )
     class Meta:
         ordering = ['-created_at']
+        constraints = [
+            models.UniqueConstraint(
+                fields = ['name', 'owner'],
+                name = 'unique_name_owner',
+            )
+        ]
 
     def __str__(self):
         return self.name

@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinLengthValidator
 from django.db import models
 
 # Create your models here.
@@ -11,9 +12,9 @@ class TimeStampedModel(models.Model):
 
 
 class CustomUser(AbstractUser):
-    phone = models.CharField(max_length=15)
-    email = models.EmailField()
-    avatar = models.ImageField(blank=True, null=True)
+    phone = models.CharField(max_length=13, unique=True, blank=True, null=True, validators=[MinLengthValidator(13)])
+    email = models.EmailField(unique=True, blank=True, null=True)
+    avatar = models.ImageField(upload_to='avatars/%Y/%m/', blank=True, null=True)
 
     def __str__(self):
-        return self.get_full_name()
+        return f"{self.username}: {self.get_full_name()}"
