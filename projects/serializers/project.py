@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from task_manager.models import Project, ProjectMember
+from task_manager.models import Project
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -11,13 +11,4 @@ class ProjectSerializer(serializers.ModelSerializer):
             'owner',
             'visibility',
             'members',
-        ]
-
-
-class ProjectMemberSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ProjectMember
-        fields = [
-            'project',
-            'user',
         ]

@@ -11,7 +11,7 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 
-class CustomUser(AbstractUser):
+class CustomUser(AbstractUser, TimeStampedModel):
     phone = models.CharField(max_length=13, unique=True, blank=True, null=True, validators=[MinLengthValidator(13)])
     email = models.EmailField(unique=True, blank=True, null=True)
     avatar = models.ImageField(upload_to='avatars/%Y/%m/', blank=True, null=True)
